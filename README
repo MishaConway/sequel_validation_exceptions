@@ -1,0 +1,20 @@
+Installation:
+1) install the gem
+gem install sequel_validation_exceptions
+2) specify the plugin in your sequel model
+plugin :validation_exceptions
+
+In a similar vein to the ActiveRecord ORM, this sequel plugin adds save!, update!, create!, and find_or_create! to the sequel model class. All of these methods will raise a Sequel::ValidationException if validation fails.
+
+Examples:
+account = Account.new :name => 'Mac'
+account.save!
+
+account.update! :name => 'Mac'
+
+Account.create! :name => 'Mac'
+
+Account.find_or_create! :name => 'Mac'
+
+
+
