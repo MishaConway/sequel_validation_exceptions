@@ -25,14 +25,14 @@ module Sequel
         def save! *columns
           success = save *columns
           if !success
-            raise ValidationException.new(errors), "Could not save #{id.nil? ? 'new' : ''} #{self.class.name} model #{id} due to failing validation: #{errors.inspect}\nmodel was: #{inspect}"
+            raise ValidationException.new(errors), "Could not save #{id.nil? ? 'new' : ''} #{self.class.name} model #{id} due to failing validation: #{errors.inspect}\n\tmodel was: #{inspect}"
           end
         end
 
         def update! *columns
           success = update *columns
           if !success
-            raise ValidationException.new(errors), "Could not update #{id.nil? ? 'new' : ''} #{self.class.name} model #{id} due to failing validation: #{errors.inspect}\nmodel was: #{inspect}"
+            raise ValidationException.new(errors), "Could not update #{id.nil? ? 'new' : ''} #{self.class.name} model #{id} due to failing validation: #{errors.inspect}\n\tmodel was: #{inspect}"
           end
         end
       end
