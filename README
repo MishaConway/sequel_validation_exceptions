@@ -7,14 +7,19 @@ plugin :validation_exceptions
 In a similar vein to the ActiveRecord ORM, this sequel plugin adds save!, update!, create!, and find_or_create! to the sequel model class. All of these methods will raise a Sequel::ValidationException if validation fails.
 
 Examples:
-account = Account.new :name => 'Mac'
-account.save!
+>> blog = Blog.new :title => ''
+>> blog.save!
+    Sequel::ValidationException: Could not save new Blog model due to failing validation: {:title=>["is not present"]}
 
-account.update! :name => 'Mac'
+>> blog = Blog.first
+>> blog.update! :title => nil
+    Sequel::ValidationException: Could not save Blog model due to failing validation: {:title=>["is not present"]}
 
-Account.create! :name => 'Mac'
+>> blog = Blog.create!
+    Sequel::ValidationException: Could not save new Blog model due to failing validation: {:title=>["is not present"]}
 
-Account.find_or_create! :name => 'Mac'
+>> blog = Blog.find_or_create! :title => ''
+    Sequel::ValidationException: Could not save new Blog model due to failing validation: {:title=>["is not present"]}
 
 
 
